@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const rentSchema = new mongoose.Schema(
   {
@@ -32,4 +32,4 @@ const rentSchema = new mongoose.Schema(
 
 rentSchema.index({ userId: 1, month: 1 }, { unique: true });
 
-module.exports = mongoose.model("Rent", rentSchema);
+export default mongoose.models.Rent || mongoose.model("Rent", rentSchema);

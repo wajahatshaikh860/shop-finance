@@ -7,7 +7,7 @@ A production-ready finance management dashboard for shopkeepers to record daily 
 - Next.js App Router frontend with Tailwind CSS
 - React Context API for authentication and dashboard state
 - JWT authentication with protected dashboard routes
-- Express.js API with MongoDB Atlas and Mongoose
+- Next.js App Router API with MongoDB Atlas and Mongoose
 - bcrypt password hashing
 - Daily transaction form with validation
 - Date and month filters without page refresh
@@ -35,9 +35,7 @@ cp .env.example .env
 ```bash
 MONGO_URI=mongodb://127.0.0.1:27017/shopFinanceDB
 JWT_SECRET=your-long-random-secret
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-CLIENT_URL=http://localhost:3000
-PORT=5000
+JWT_EXPIRES_IN=30d
 ```
 
 For local MongoDB shell, connect with:
@@ -46,28 +44,22 @@ For local MongoDB shell, connect with:
 mongosh "mongodb://127.0.0.1:27017/shopFinanceDB"
 ```
 
-4. Start the backend:
-
-```bash
-npm run backend:dev
-```
-
-5. Start the frontend in another terminal:
+4. Start the app:
 
 ```bash
 npm run dev
 ```
 
-Frontend: `http://localhost:3000`
+App: `http://localhost:3000`
 
-API: `http://localhost:5000/api`
+API: `http://localhost:3000/api`
 
 ## First User
 
 Register a shopkeeper account before logging in:
 
 ```bash
-curl -X POST http://localhost:5000/api/auth/register \
+curl -X POST http://localhost:3000/api/auth/register \
   -H "Content-Type: application/json" \
   -d "{\"name\":\"Shop Owner\",\"email\":\"owner@shop.com\",\"password\":\"password123\"}"
 ```
@@ -78,8 +70,13 @@ Then log in at `/login`, or create an account from `/signup`.
 
 - `POST /api/auth/register`
 - `POST /api/auth/login`
+- `GET /api/dashboard`
 - `GET /api/dashboard/summary`
 - `POST /api/transactions`
 - `GET /api/transactions`
 - `PUT /api/transactions/:id`
 - `DELETE /api/transactions/:id`
+- `GET /api/rents`
+- `POST /api/rents`
+- `PUT /api/rents/:id`
+- `DELETE /api/rents/:id`

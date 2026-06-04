@@ -1,9 +1,16 @@
-const Transaction = require("../models/Transaction");
+import { getAuthUser } from "@/lib/auth";
+import { handleApiError } from "@/lib/errorHandler";
+import { json } from "@/lib/apiResponse";
+import Transaction from "@/models/Transaction";
 
-const getSummary = async (req, res, next) => {
+export const runtime = "nodejs";
+
+export async function GET(request) {
   try {
+    const user = await getAuthUser(request);
+
     const rows = await Transaction.aggregate([
-      { $match: { userId: req.user._id } },
+      { $match: { userId: user._id } },
       {
         $group: {
           _id: null,
@@ -23,7 +30,7 @@ const getSummary = async (req, res, next) => {
     const totals = rows[0] || { totalCashIncome: 0, totalOnlineIncome: 0, totalExpense: 0 };
     const totalIncome = totals.totalCashIncome + totals.totalOnlineIncome;
 
-    res.json({
+    return json({
       summary: {
         totalCash: totals.totalCashIncome,
         totalOnline: totals.totalOnlineIncome,
@@ -32,8 +39,6 @@ const getSummary = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    return handleApiError(error);
   }
-};
-
-module.exports = { getSummary };
+}
