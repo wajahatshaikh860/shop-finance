@@ -7,9 +7,9 @@ export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f5f7fb]">
+    <div className="min-h-full bg-[#f5f7fb]">
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-      <main className="min-h-screen px-4 py-20 sm:px-6 lg:ml-72 lg:px-8 lg:py-8">
+      <main className="px-4 pb-10 pt-24 sm:px-6 lg:ml-72 lg:px-8 lg:py-8">
         <div className="mx-auto max-w-7xl">{children}</div>
       </main>
     </div>

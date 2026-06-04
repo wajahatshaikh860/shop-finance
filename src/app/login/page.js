@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FiLock, FiMail } from "react-icons/fi";
+import { FiBarChart2, FiLock, FiMail, FiShield, FiTrendingUp } from "react-icons/fi";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { useAuth } from "@/context/AuthContext";
@@ -45,34 +45,71 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-950">
-      <div className="grid min-h-screen lg:grid-cols-[1.05fr_0.95fr]">
-        <section className="hidden bg-[linear-gradient(135deg,#102018,#0f172a_48%,#12312a)] p-10 text-white lg:flex lg:flex-col lg:justify-between">
-          <div className="text-xl font-black">Shop Finance Manager</div>
-          <div className="max-w-xl">
-            <p className="mb-5 inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-emerald-100">
+    <main className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,#d8f7e8_0,#f7fafc_34%,#eef2ff_68%,#f8fafc_100%)] text-slate-950">
+      <div className="grid min-h-screen lg:grid-cols-2">
+        <section className="relative hidden min-h-screen overflow-hidden bg-[linear-gradient(135deg,#07111f,#0f172a_46%,#0b3a31)] p-10 text-white lg:flex lg:flex-col lg:justify-center xl:p-14">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.30),transparent_28%),radial-gradient(circle_at_82%_72%,rgba(59,130,246,0.18),transparent_34%)]" />
+          <div className="absolute left-10 top-10 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl" />
+          <div className="absolute bottom-10 right-10 h-56 w-56 rounded-full bg-blue-400/10 blur-3xl" />
+          <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.7)_1px,transparent_1px)] [background-size:48px_48px]" />
+
+          <div className="relative mx-auto flex w-full max-w-xl flex-col justify-center">
+            <div className="mb-16 flex items-center gap-3">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-emerald-300 ring-1 ring-white/15">
+                <FiBarChart2 className="text-2xl" />
+              </span>
+              <div>
+                <p className="text-xl font-black tracking-tight">Shop Finance Manager</p>
+                <p className="text-sm font-medium text-slate-300">Production finance dashboard</p>
+              </div>
+            </div>
+
+            <p className="mb-5 inline-flex w-fit rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-emerald-100 ring-1 ring-white/15">
               Daily finance control for busy shops
             </p>
-            <h1 className="text-5xl font-black leading-tight tracking-tight">
-              Keep cash, online income, and expenses organized every day.
+            <h1 className="text-4xl font-black leading-tight tracking-tight xl:text-6xl">
+              Keep every rupee moving with clarity.
             </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-300">
-              A clean operating dashboard for daily entries, summaries, invoice-style reports, and PDF exports.
+            <p className="mt-6 max-w-lg text-base leading-8 text-slate-300 xl:text-lg">
+              Track daily cash, online income, expenses, rent payments, and reports from one calm finance workspace.
             </p>
-          </div>
-          <div className="grid grid-cols-3 gap-4 text-sm text-slate-300">
-            <span className="rounded-xl bg-white/10 p-4">JWT secured</span>
-            <span className="rounded-xl bg-white/10 p-4">Mobile ready</span>
-            <span className="rounded-xl bg-white/10 p-4">No refresh</span>
+
+            <div className="mt-12 grid grid-cols-3 gap-4 text-sm text-slate-200">
+              <span className="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+                <FiShield className="mb-3 text-xl text-emerald-300" />
+                JWT secured
+              </span>
+              <span className="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+                <FiTrendingUp className="mb-3 text-xl text-emerald-300" />
+                Live summary
+              </span>
+              <span className="rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+                <FiBarChart2 className="mb-3 text-xl text-emerald-300" />
+                Reports ready
+              </span>
+            </div>
           </div>
         </section>
-        <section className="flex items-center justify-center bg-slate-100 px-4 py-10">
-          <form onSubmit={handleSubmit} className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl shadow-slate-950/10 ring-1 ring-slate-200 sm:p-8">
-            <div className="mb-8">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-600">Welcome back</p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950">Login</h2>
-              <p className="mt-2 text-sm text-slate-500">Access your shop finance dashboard.</p>
+
+        <section className="flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 lg:bg-white/35 lg:px-10">
+          <div className="w-full max-w-md">
+            <div className="mb-8 text-center lg:hidden">
+              <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-slate-950 text-emerald-300 shadow-xl shadow-slate-950/15">
+                <FiBarChart2 className="text-2xl" />
+              </div>
+              <h1 className="mt-4 text-2xl font-black tracking-tight text-slate-950">Shop Finance Manager</h1>
+              <p className="mt-2 text-sm font-medium text-slate-600">Daily income, expense, and rent control.</p>
             </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-[1.75rem] border border-white/70 bg-white/72 p-6 shadow-2xl shadow-slate-950/12 backdrop-blur-xl sm:p-8"
+            >
+              <div className="mb-8">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-600">Welcome back</p>
+                <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Login</h2>
+                <p className="mt-2 text-sm leading-6 text-slate-600">Access your finance workspace and continue tracking today.</p>
+              </div>
             <div className="space-y-5">
               <div className="relative">
                 <FiMail className="pointer-events-none absolute left-4 top-11 text-slate-400" />
@@ -82,7 +119,7 @@ export default function LoginPage() {
                   placeholder="owner@shop.com"
                   value={form.email}
                   error={errors.email}
-                  className="pl-11"
+                  className="border-white/70 bg-white/85 pl-11 shadow-sm"
                   onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
                 />
               </div>
@@ -94,13 +131,17 @@ export default function LoginPage() {
                   placeholder="Your password"
                   value={form.password}
                   error={errors.password}
-                  className="pl-11"
+                  className="border-white/70 bg-white/85 pl-11 shadow-sm"
                   onChange={(event) => setForm((current) => ({ ...current, password: event.target.value }))}
                 />
               </div>
             </div>
             {serverError ? <p className="mt-4 rounded-xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">{serverError}</p> : null}
-            <Button type="submit" loading={loading} className="mt-7 w-full">
+            <Button
+              type="submit"
+              loading={loading}
+              className="mt-7 w-full rounded-2xl bg-slate-950 shadow-xl shadow-slate-950/15 hover:bg-slate-800"
+            >
               Login securely
             </Button>
             <p className="mt-5 text-center text-sm text-slate-500">
@@ -109,7 +150,8 @@ export default function LoginPage() {
                 Create an account
               </Link>
             </p>
-          </form>
+            </form>
+          </div>
         </section>
       </div>
     </main>
